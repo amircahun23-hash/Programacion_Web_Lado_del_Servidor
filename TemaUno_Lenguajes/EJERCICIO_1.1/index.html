@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Contacto</title>
+
+<!-- Google Font Karla -->
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --green-200: hsl(148, 38%, 91%);
+  --green-600: hsl(169, 82%, 27%);
+  --red: hsl(0, 66%, 54%);
+  --white: hsl(0, 0%, 100%);
+  --grey-500: hsl(186, 15%, 59%);
+  --grey-900: hsl(187, 24%, 22%);
+}
+
+*{box-sizing:border-box;font-family:'Karla', sans-serif}
+
+body{
+  margin:0;
+  background:var(--green-200);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.card{
+  background:var(--white);
+  width:100%;
+  max-width:720px;
+  padding:36px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+h2{
+  margin:0 0 24px;
+  color:var(--grey-900);
+  font-weight:700;
+}
+
+label{
+  font-size:16px;
+  font-weight:700;
+  color:var(--grey-900);
+}
+
+.req{color:var(--green-600)}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.field{margin-bottom:18px}
+
+input[type=text],
+input[type=email],
+textarea{
+  width:100%;
+  padding:14px;
+  border-radius:8px;
+  border:1px solid var(--grey-500);
+  font-size:16px;
+  outline:none;
+  transition:.2s;
+}
+
+input::placeholder{color:var(--grey-500)}
+
+input:focus, textarea:focus{
+  border-color:var(--green-600);
+}
+
+textarea{
+  height:140px;
+  resize:vertical;
+}
+
+/* radios */
+.radio-group{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:10px;
+}
+
+.radio-card{
+  border:1px solid var(--grey-500);
+  border-radius:8px;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  transition:.2s;
+  font-size:16px;
+  color:var(--grey-900);
+}
+
+.radio-card:hover{
+  background:var(--green-200);
+  border-color:var(--green-600);
+}
+
+.radio-card input{accent-color:var(--green-600)}
+
+/* checkbox */
+.checkbox{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:16px;
+  margin-top:8px;
+  color:var(--grey-900);
+}
+.checkbox input{
+  margin-top:3px;
+  accent-color:var(--green-600);
+}
+
+/* button */
+button{
+  width:100%;
+  margin-top:22px;
+  background:var(--green-600);
+  color:var(--white);
+  border:none;
+  padding:16px;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+button:hover{filter:brightness(.95)}
+
+/* error styles */
+.error-input{
+  border-color:var(--red) !important;
+  background:#fff6f6;
+}
+
+.error-text{
+  color:var(--red);
+  font-size:14px;
+  margin-top:6px;
+  display:none;
+  font-weight:400;
+}
+
+.show{display:block}
+
+@media(max-width: 375px){
+  .card{padding:22px}
+}
+
+@media(max-width: 700px){
+  .row,.radio-group{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Contáctanos</h2>
+
+  <form id="form" novalidate>
+
+    <div class="row">
+      <div class="field">
+        <label>Nombre <span class="req">*</span></label>
+        <input id="fname" type="text">
+        <div class="error-text" id="err-fname">Este campo es obligatorio</div>
+      </div>
+
+      <div class="field">
+        <label>Apellido <span class="req">*</span></label>
+        <input id="lname" type="text">
+        <div class="error-text" id="err-lname">Este campo es obligatorio</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Correo electrónico <span class="req">*</span></label>
+      <input id="email" type="email" placeholder="correo@ejemplo.com">
+      <div class="error-text" id="err-email">Ingresa un correo electrónico válido</div>
+    </div>
+
+    <div class="field">
+      <label>Tipo de consulta <span class="req">*</span></label>
+      <div class="radio-group" id="radioBox">
+        <label class="radio-card">
+          <input type="radio" name="query" value="general"> Consulta general
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="query" value="support"> Solicitud de soporte
+        </label>
+      </div>
+      <div class="error-text" id="err-query">Selecciona un tipo de consulta</div>
+    </div>
+
+    <div class="field">
+      <label>Mensaje <span class="req">*</span></label>
+      <textarea id="message"></textarea>
+      <div class="error-text" id="err-message">Este campo es obligatorio</div>
+    </div>
+
+    <label class="checkbox">
+      <input type="checkbox" id="consent">
+      Autorizo ser contactado por el equipo <span class="req">*</span>
+    </label>
+    <div class="error-text" id="err-consent">Para enviar el formulario debes autorizar el contacto</div>
+
+    <button type="submit">Enviar</button>
+
+  </form>
+</div>
+
+<script>
+const form = document.getElementById('form');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  let ok = true;
+
+  function req(id, errId){
+    const el = document.getElementById(id);
+    if(!el.value.trim()){
+      el.classList.add('error-input');
+      document.getElementById(errId).classList.add('show');
+      ok = false;
+    } else {
+      el.classList.remove('error-input');
+      document.getElementById(errId).classList.remove('show');
+    }
+  }
+
+  req('fname','err-fname');
+  req('lname','err-lname');
+  req('message','err-message');
+
+  const email = document.getElementById('email');
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+  if(!emailValid){
+    email.classList.add('error-input');
+    document.getElementById('err-email').classList.add('show');
+    ok = false;
+  } else {
+    email.classList.remove('error-input');
+    document.getElementById('err-email').classList.remove('show');
+  }
+
+  const queryChecked = document.querySelector('input[name="query"]:checked');
+  const radioBox = document.getElementById('radioBox');
+  if(!queryChecked){
+    radioBox.classList.add('error-input');
+    document.getElementById('err-query').classList.add('show');
+    ok = false;
+  } else {
+    radioBox.classList.remove('error-input');
+    document.getElementById('err-query').classList.remove('show');
+  }
+
+  const consent = document.getElementById('consent');
+  if(!consent.checked){
+    document.getElementById('err-consent').classList.add('show');
+    ok = false;
+  } else {
+    document.getElementById('err-consent').classList.remove('show');
+  }
+
+  if(ok){
+    alert('Mensaje enviado correctamente');
+    form.reset();
+  }
+});
+</script>
+
+</body>
+</html>
