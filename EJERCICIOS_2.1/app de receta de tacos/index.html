@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TacosMx</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<h1>Tacoschidos 🌮</h1>
+
+<form id="Form" class="buttons">
+  <button type="button" data-type="Puerco">🐷</button>
+  <button type="button" data-type="Pollo">🐔</button>
+  <button type="button" data-type="Huevo">🥚</button>
+  <button type="button" data-type="Pescado">🦌</button>
+</form>
+
+<div id="Container" class="card"></div>
+
+<script>
+const botones = document.querySelectorAll("button");
+const container = document.getElementById("Container");
+
+botones.forEach(btn => {
+  btn.addEventListener("click", async () => {
+    try {
+      const type = btn.dataset.type;
+
+      const res = await fetch(`/receta/${type}`);
+      const data = await res.json();
+
+      if (data.error) {
+        container.innerHTML = "<p>No encontrado</p>";
+        return;
+      }
+
+      container.innerHTML = `
+        <h2>${data.nombre}</h2>
+        <p><strong>Precio:</strong> $${data.precio}</p>
+
+        <h3>Ingredientes:</h3>
+        <p><strong>Carne:</strong> ${data.ingredientes.proteina.nombre}</p>
+        <p><strong>Preparación:</strong> ${data.ingredientes.proteina.preparacion}</p>
+        <p><strong>Salsa:</strong> ${data.ingredientes.salsa.nombre} (${data.ingredientes.salsa.picor})</p>
+
+        <h3>Acompañamientos:</h3>
+        ${data.ingredientes.acompañamientos.map(a => `
+          <p>• ${a.nombre}: ${a.cantidad}</p>
+        `).join("")}
+      `;
+    } catch (error) {
+      console.error(error);
+      container.innerHTML = "<p>Error al cargar datos</p>";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
