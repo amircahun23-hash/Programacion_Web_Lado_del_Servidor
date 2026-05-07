@@ -1,0 +1,61 @@
+/*Por Jairo amir cahun tamay */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    font-family: 'Lato', sans-serif;
+    background-color: #f1f1f1; 
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* CARD */
+.card {
+    width: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    background: #fff;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* IMAGEN */
+.face1 {
+    background: #6eadd4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.face1 img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* MENSAJE */
+.face2 {
+    padding: 20px;
+    text-align: center;
+}
+
+.face2 h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.face2 p {
+    margin: 0;
+    color: #555;
+}
