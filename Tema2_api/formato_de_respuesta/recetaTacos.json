@@ -1,0 +1,99 @@
+[
+  {
+    "id": "0001",
+    "tipo": "taco",
+    "nombre": "Taco de lechón",
+    "precio": 20.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Puerco",
+        "preparacion": "Horneado"
+      },
+      "salsa": {
+        "nombre": "Tomate verde",
+        "picor": "Medio"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Cebolla",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Cebolla blanca", "Cilantro", "Naranja", "Sal"]
+        },
+        {
+          "nombre": "Guacamole",
+          "cantidad": "2 cucharadas",
+          "ingredientes": ["Aguacate", "Jugo de limón", "Sal", "Cebolla", "Cilantro"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0002",
+    "tipo": "taco",
+    "nombre": "Taco de cochinita pibil",
+    "precio": 18.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Cerdo",
+        "preparacion": "Adobado y horneado"
+      },
+      "salsa": {
+        "nombre": "Habanero",
+        "picor": "Alto"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Cebolla morada",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Cebolla morada", "Vinagre", "Orégano", "Sal"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0003",
+    "tipo": "taco",
+    "nombre": "Taco de pescado",
+    "precio": 22.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Pescado",
+        "preparacion": "Empanizado"
+      },
+      "salsa": {
+        "nombre": "Chipotle",
+        "picor": "Medio"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Col rallada",
+          "cantidad": "1 taza",
+          "ingredientes": ["Col", "Zanahoria", "Mayonesa", "Limón"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0004",
+    "tipo": "taco",
+    "nombre": "Taco de pollo asado",
+    "precio": 19.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Pollo",
+        "preparacion": "Asado"
+      },
+      "salsa": {
+        "nombre": "Roja",
+        "picor": "Bajo"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Pico de gallo",
+          "cantidad": "2 cucharadas",
+          "ingredientes": ["Tomate", "Cebolla", "Cilantro", "Limón", "Sal"]
+        }
+      ]
+    }
+  }
+]
