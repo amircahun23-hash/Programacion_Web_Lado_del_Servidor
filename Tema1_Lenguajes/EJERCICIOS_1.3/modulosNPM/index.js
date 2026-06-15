@@ -1,11 +1,8 @@
-//Hecho por Jairo Amir Cahun Tamay
-var generateName = require('sillyname');
-import generateName from "sillyname";
+// import generateName from 'sillyname';
+// const nombre = generateName();
+// console.log(`Mi nombre tonto es ${nombre}`);
 
-var sillyName = generateName();
+import superheroes from 'superheroes';
 
-console.log(sillyName);
-
-import { randomSuperhero } from 'superheroes';
-
-console.log(randomSuperhero());
+const heroe = superheroes[Math.floor(Math.random() * superheroes.length)];
+console.log(`Superhéroe aleatorio: ${heroe}`);

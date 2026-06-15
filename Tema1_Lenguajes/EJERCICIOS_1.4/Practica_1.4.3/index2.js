@@ -5,34 +5,30 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-console.log(__dirname);
-
 const app = express();
 const port = 3000;
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 var nombreEquipo = "";
 
 function registrador(req, res, next) {
-  console.log(req.body); 
-
-  // espacio entre las palabras
-  nombreEquipo = req.body["mascota"] + " " + req.body["adjetivo"];
-
-  next(); 
+    if (req.body && req.body["mascota"]) {
+        console.log(req.body);
+        nombreEquipo = req.body["mascota"] + req.body["adjetivo"];
+    }
+    next();
 }
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(registrador);
 
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+});
+
 app.post("/submit", (req, res) => {
-  res.send(`Nombre del equipo:<br><br>${nombreEquipo} ✌️`);
+    res.send(`<h1>El nombre de tu equipo es:</h1><h2>${nombreEquipo}✌</h2>`);
 });
 
 app.listen(port, () => {
-  console.log(`Servidor ejecutándose en el puerto ${port}`);
+    console.log(`Servidor ejecutandose en el puerto ${port}`);
 });
