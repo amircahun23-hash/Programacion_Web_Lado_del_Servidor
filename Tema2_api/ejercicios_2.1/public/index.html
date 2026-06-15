@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TacosMx</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <h1>Tacos de Paisa  🌮</h1>
+  <p class="subtitulo">Elige tu proteína favorita</p>
+
+  <!-- Formulario con botones por proteína -->
+  <form id="Form" class="buttons">
+    <button type="button" data-type="Puerco"  title="Puerco">🐷</button>
+    <button type="button" data-type="Pollo"   title="Pollo">🐔</button>
+    <button type="button" data-type="Huevo"   title="Huevo">🥚</button>
+    <button type="button" data-type="Venado"  title="Venado">🦌</button>
+  </form>
+
+  <!-- Contenedor donde se renderiza la receta -->
+  <div id="Container">
+    <div class="placeholder">👆 Selecciona una proteína para ver la receta</div>
+  </div>
+
+  <script>
+    // ── Referencia al contenedor ──────────────────────────────────────────────
+    const container = document.getElementById("Container");
+    const form      = document.getElementById("Form");
+
+    // ── Función: obtener receta del backend con Fetch API ────────────────────
+    async function obtenerReceta(tipo) {
+      try {
+        const respuesta = await fetch(`/receta/${tipo}`);
+        const datos     = await respuesta.json();
+
+        if (datos.error) {
+          container.innerHTML = `<p class="error-msg">❌ ${datos.error}</p>`;
+          return;
+        }
+
+        renderizarReceta(datos);
+      } catch (err) {
+        container.innerHTML = `<p class="error-msg">⚠️ No se pudo conectar al servidor.</p>`;
+        console.error(err);
+      }
+    }
+
+    // ── Función: renderizar la tarjeta en el DOM ─────────────────────────────
+    function renderizarReceta(taco) {
+      const { nombre, precio, ingredientes } = taco;
+      const { proteina, salsa, acompañamientos } = ingredientes;
+
+      // Construir los <li> de acompañamientos
+      const listaAcomp = acompañamientos
+        .map(a => `<li>Acompañamiento: ${a.cantidad} &nbsp;–&nbsp; <strong>${a.nombre}</strong></li>`)
+        .join("");
+
+      container.innerHTML = `
+        <div class="card">
+          <h2>${nombre}</h2>
+          <span class="precio">Precio: $${precio.toFixed(2)}</span>
+          <h3>Ingredientes:</h3>
+          <ul>
+            <li>Carne de: <strong>${proteina.nombre}</strong>, Modo preparación: ${proteina.preparacion}</li>
+            <li>Salsa: ${salsa.nombre} (${salsa.picor})</li>
+            ${listaAcomp}
+          </ul>
+        </div>
+      `;
+    }
+
+    // ── Escuchar clics en el formulario (delegación de eventos) ──────────────
+    form.addEventListener("click", (evento) => {
+      const boton = evento.target.closest("button");
+      if (!boton) return;
+
+      // Marcar botón activo
+      document.querySelectorAll(".buttons button").forEach(b => b.classList.remove("activo"));
+      boton.classList.add("activo");
+
+      // Obtener el tipo de proteína del atributo data-type
+      const tipo = boton.dataset.type;
+      obtenerReceta(tipo);
+    });
+  </script>
+
+</body>
+</html>

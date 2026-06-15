@@ -1,0 +1,114 @@
+[
+  {
+    "id": "0001",
+    "tipo": "taco",
+    "nombre": "Taco lechon",
+    "precio": 20.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Puerco",
+        "preparacion": "Horneado"
+      },
+      "salsa": {
+        "nombre": "Tomate verde",
+        "picor": "Medio"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Cebolla",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Cebolla blanca", "Cilantro", "Naranja", "Sal"]
+        },
+        {
+          "nombre": "Guacamole",
+          "cantidad": "2 cucharadas",
+          "ingredientes": ["Aguacate", "Jugo de limon", "Sal", "Cebolla", "Cilantro"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0002",
+    "tipo": "taco",
+    "nombre": "Taco de Pollo",
+    "precio": 18.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Pollo",
+        "preparacion": "Asado"
+      },
+      "salsa": {
+        "nombre": "Habanero",
+        "picor": "Alto"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Escabeche",
+          "cantidad": "2 cucharadas",
+          "ingredientes": ["Cebolla morada", "Chile habanero", "Zanahoria", "Vinagre", "Sal"]
+        },
+        {
+          "nombre": "Pico de gallo",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Jitomate", "Cebolla", "Cilantro", "Chile serrano", "Limon"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0003",
+    "tipo": "taco",
+    "nombre": "Taco de Huevo con Longaniza",
+    "precio": 16.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Huevo",
+        "preparacion": "Revuelto"
+      },
+      "salsa": {
+        "nombre": "Chiltomate",
+        "picor": "Bajo"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Frijoles negros",
+          "cantidad": "3 cucharadas",
+          "ingredientes": ["Frijol negro", "Epazote", "Sal", "Manteca"]
+        },
+        {
+          "nombre": "Salsa de chile dulce",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Chile dulce", "Tomate", "Ajo", "Sal"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "0004",
+    "tipo": "taco",
+    "nombre": "Taco de Venado",
+    "precio": 25.00,
+    "ingredientes": {
+      "proteina": {
+        "nombre": "Venado",
+        "preparacion": "Adobado"
+      },
+      "salsa": {
+        "nombre": "X'nipek",
+        "picor": "Alto"
+      },
+      "acompañamientos": [
+        {
+          "nombre": "Cebolla asada",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Cebolla blanca", "Chile xcatic", "Limon", "Sal"]
+        },
+        {
+          "nombre": "Recado negro",
+          "cantidad": "1 cucharada",
+          "ingredientes": ["Chile mulato", "Especias", "Ajo", "Oregano yucateco"]
+        }
+      ]
+    }
+  }
+]
